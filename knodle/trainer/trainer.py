@@ -78,9 +78,7 @@ class Trainer(ABC):
             logger.info("Wrong optimizer parameters. Optimizer should belong to torch.optim class or be PyTorch "
                         "compatible.")
 
-
 class BaseTrainer(Trainer):
-
     def __init__(
             self,
             model: Module,
@@ -91,7 +89,6 @@ class BaseTrainer(Trainer):
         if kwargs.get("trainer_config", None) is None:
             kwargs["trainer_config"] = BaseTrainerConfig()
         super().__init__(model, mapping_rules_labels_t, model_input_x, rule_matches_z, **kwargs)
-
         check_other_class_id(self.trainer_config, self.mapping_rules_labels_t)
 
     def _load_train_params(
