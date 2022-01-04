@@ -16,7 +16,8 @@ class MajorityVoteSeqTrainer:
             self,
             model_input_x: np.ndarray = None, rule_matches_z: np.ndarray = None,
             dev_model_input_x: np.ndarray = None, dev_gold_labels_y: np.ndarray = None,
-            epochs = 20
+            epochs = 20,
+            print_val = False
     ):
         # Training parameters
         start_epoch = 0  # start at this epoch
@@ -35,7 +36,6 @@ class MajorityVoteSeqTrainer:
                                                    num_workers=workers, pin_memory=False)
         val_loader = torch.utils.data.DataLoader(utils.SeqDataset(dev_model_input_x, dev_gold_labels_y), batch_size=batch_size, shuffle=True,
                                                  num_workers=workers, pin_memory=False)
-        print_val = True
         for epoch in range(start_epoch, epochs):
             self.model.train()
             if print_val:

@@ -159,10 +159,10 @@ def adjust_learning_rate(optimizer, new_lr):
     :param new_lr: new learning rate
     """
 
-    print("\nDECAYING learning rate.")
+    #print("\nDECAYING learning rate.")
     for param_group in optimizer.param_groups:
         param_group['lr'] = new_lr
-    print("The new learning rate is %f\n" % (optimizer.param_groups[0]['lr'],))
+    #print("The new learning rate is %f\n" % (optimizer.param_groups[0]['lr'],))
 
 class SeqDataset(Dataset):
     def __init__(self, tokens, labels):
